@@ -21,6 +21,13 @@ module WeeklyCommits
       default: false,
     }
 
+    method_option :sort, {
+      type: :string,
+      desc: 'Show commits in ascending/descending order. Default: older commits on top, newer on bottom.',
+      default: 'asc',
+      enum: ['asc','desc'],
+    }
+
     def weekly_commits
       relative_week = options[:week]
       beg_week = relative_week.week.ago.beginning_of_week
@@ -33,6 +40,7 @@ module WeeklyCommits
 
         commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'`
 
+        commits = commits.lines.reverse if options[:sort].downcase == 'asc'
 
         puts week_title.yellow
         puts commits
