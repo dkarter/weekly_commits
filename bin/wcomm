@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require 'weekly_commits'
+
+WeeklyCommits::CLI.start
