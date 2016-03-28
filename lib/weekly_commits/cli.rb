@@ -7,7 +7,7 @@ module WeeklyCommits
     package_name 'Weekly Commits'
     default_task :weekly_commits
 
-    desc 'weekly_commits', 'Lists commits for a specified week'
+    desc 'weekly_commits', '[DEFAULT] Lists commits for a specified week'
     method_option :week, {
       type: :numeric,
       desc: 'Relative week number. e.g. -w=1 for last week. 0 = current week.',
