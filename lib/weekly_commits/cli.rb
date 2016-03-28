@@ -12,8 +12,15 @@ module WeeklyCommits
       type: :numeric,
       desc: 'Relative week number. e.g. -w=1 for last week. 0 = current week.',
       aliases: '-w',
-      default: 0
+      default: 0,
     }
+
+    method_option :show_committer, {
+      type: :boolean,
+      desc: 'Display committer with each commit message. e.g. Did stuff (Dorian Karter)',
+      default: false,
+    }
+
     def weekly_commits
       relative_week = options[:week]
       beg_week = relative_week.week.ago.beginning_of_week
@@ -22,8 +29,10 @@ module WeeklyCommits
         date = beg_week + day_count.days
         week_title = date.strftime('%a, %e %b %Y')
         git_date_format = date.strftime('%Y-%m-%e')
+        committer = options[:show_committer] ? ' (%cn)' : ''
 
-        commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s'`
+        commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'`
+
 
         puts week_title.yellow
         puts commits
