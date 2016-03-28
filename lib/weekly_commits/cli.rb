@@ -15,9 +15,9 @@ module WeeklyCommits
       default: 0,
     }
 
-    method_option :show_committer, {
+    method_option :show_author, {
       type: :boolean,
-      desc: 'Display committer with each commit message. e.g. Did stuff (Dorian Karter)',
+      desc: 'Display author(s) with each commit message. e.g. Did stuff (Dorian Karter)',
       default: false,
     }
 
@@ -36,7 +36,7 @@ module WeeklyCommits
         date = beg_week + day_count.days
         week_title = date.strftime('%a, %e %b %Y')
         git_date_format = date.strftime('%Y-%m-%e')
-        committer = options[:show_committer] ? ' (%cn)' : ''
+        committer = options[:show_author] ? ' (%cn)'.magenta : ''
 
         commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'`
 
