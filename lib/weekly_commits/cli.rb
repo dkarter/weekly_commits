@@ -5,7 +5,7 @@ require 'active_support/all'
 module WeeklyCommits
   class CLI < Thor
     package_name 'Weekly Commits'
-    default_task :get_weekly_commits
+    default_task :weekly_commits
 
     desc 'weekly_commits', 'Lists commits for a specified week'
     method_option :week, {
