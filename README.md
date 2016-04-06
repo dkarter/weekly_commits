@@ -45,10 +45,14 @@ Options:
                                                  # Possible values: asc, desc
 ```
 
-### Example
+To use the gem, navigate to a repo and make sure you have the WeeklyCommits gem
+installed for that version of ruby in that directory.
 
-First navigate to a repo and make sure you have the WeeklyCommits gem installed
-for that version of ruby in that directory.
+Make sure you are on the correct branch.
+
+By default WeeklyCommits will only show commits on the current branch.
+
+### Example
 
 Show me this week's commits:
 
