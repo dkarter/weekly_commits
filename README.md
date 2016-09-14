@@ -1,5 +1,7 @@
 ![WeeklyCommits](weekly_commits.png)
 
+[![Build Status](https://travis-ci.org/dkarter/weekly_commits.svg?branch=master)](https://travis-ci.org/dkarter/weekly_commits)
+
 WeeklyCommits is a command line tool for getting a bird's eye view of your
 commits on a branch for a specific week.
 
