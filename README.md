@@ -1,4 +1,4 @@
-# WeeklyCommits
+![WeeklyCommits](weekly_commits.png)
 
 WeeklyCommits is a command line tool for getting a bird's eye view of your
 commits on a branch for a specific week.
