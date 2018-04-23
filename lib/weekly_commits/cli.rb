@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'thor'
 require 'colorize'
 require 'active_support/all'
@@ -8,25 +10,22 @@ module WeeklyCommits
     default_task :weekly_commits
 
     desc 'weekly_commits', '[DEFAULT] Lists commits for a specified week'
-    method_option :week, {
-      type: :numeric,
-      desc: 'Relative week number. e.g. -w=1 for last week. 0 = current week.',
-      aliases: '-w',
-      default: 0,
-    }
+    method_option :week,
+                  type: :numeric,
+                  desc: 'Relative week number. e.g. -w=1 for last week. 0 = current week.',
+                  aliases: '-w',
+                  default: 0
 
-    method_option :show_author, {
-      type: :boolean,
-      desc: 'Display author(s) with each commit message. e.g. Did stuff (Dorian Karter)',
-      default: false,
-    }
+    method_option :show_author,
+                  type: :boolean,
+                  desc: 'Display author(s) with each commit message. e.g. Did stuff (Ghost Ninja)',
+                  default: false
 
-    method_option :sort, {
-      type: :string,
-      desc: 'Show commits in ascending/descending order. Default: older commits on top, newer on bottom.',
-      default: 'asc',
-      enum: ['asc','desc'],
-    }
+    method_option :sort,
+                  type: :string,
+                  desc: 'Show commits in ascending/descending order. Default: older commits on top, newer on bottom.',
+                  default: 'asc',
+                  enum: %w[asc desc]
 
     def weekly_commits
       relative_week = options[:week]
@@ -40,7 +39,7 @@ module WeeklyCommits
 
         commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'`
 
-        commits = commits.lines.reverse if options[:sort].downcase == 'asc'
+        commits = commits.lines.reverse if options[:sort].casecmp('asc').zero?
 
         puts week_title.yellow
         puts commits

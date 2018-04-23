@@ -41,7 +41,7 @@ Usage:
 Options:
   -w, [--week=N]                                 # Relative week number. e.g. -w=1 for last week. 0 = current week.
                                                  # Default: 0
-      [--show-author], [--no-show-author]        # Display author(s) with each commit message. e.g. Did stuff (Dorian Karter)
+      [--show-author], [--no-show-author]        # Display author(s) with each commit message. e.g. Did stuff (Ghost Ninja)
       [--sort=SORT]                              # Show commits in ascending/descending order. Default: older commits on top, newer on bottom.
                                                  # Default: desc
                                                  # Possible values: asc, desc
@@ -62,13 +62,13 @@ Show me this week's commits:
 wcomm
 ```
 
-Show me last weeks commits:
+Show me last week's commits:
 
 ```sh
 wcomm -w=1
 ```
 
-Show me commits from two weeks ago including committer
+Show me commits from two weeks ago including author
 
 ```sh
 wcomm -w=2 --show-author
@@ -80,7 +80,7 @@ wcomm -w=2 --show-author
 
 ## TODO
 
-- [ ] Add support for multiple branches
+- [ ] Add support for specifying a branch explicitly
 
 ## Contributing
 
