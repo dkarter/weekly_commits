@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage      = 'http://doriankarter.com'
   spec.license       = 'MIT'
 
-  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
+  spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features|screenshots)/}) }
   spec.bindir        = 'bin'
   spec.executables   = ['wcomm']
   spec.require_paths = ['lib']

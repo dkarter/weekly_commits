@@ -74,6 +74,10 @@ Show me commits from two weeks ago including committer
 wcomm -w=2 --show-author
 ```
 
+### Screenshots
+
+![tilex](screenshots/tilex.png)
+
 ## TODO
 
 - [ ] Add support for multiple branches
