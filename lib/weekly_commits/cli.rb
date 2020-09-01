@@ -42,9 +42,10 @@ module WeeklyCommits
         git_date_format = date.strftime('%Y-%m-%e')
         committer = options[:show_author] ? ' (%cn)'.magenta : ''
 
-        commits = `git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'`
-        commits += ' --no-merges' if options[:no_merge]
+        git_log_command = "git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'"
+        git_log_command += ' --no-merges' if options[:no_merge]
 
+        commits = `#{git_log_command}`
         commits = commits.lines.reverse if options[:sort].casecmp('asc').zero?
 
         puts week_title.yellow
