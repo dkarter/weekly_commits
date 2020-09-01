@@ -39,7 +39,7 @@ module WeeklyCommits
       5.times do |day_count|
         date = beg_week + day_count.days
         week_title = date.strftime('%a, %e %b %Y')
-        git_date_format = date.strftime('%Y-%m-%e')
+        git_date_format = date.strftime('%Y-%m-%d')
         committer = options[:show_author] ? ' (%cn)'.magenta : ''
 
         git_log_command = "git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'"
