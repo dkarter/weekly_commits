@@ -27,11 +27,6 @@ module WeeklyCommits
                   default: 'asc',
                   enum: %w[asc desc]
 
-    method_option :no_merge,
-                  type: :boolean,
-                  desc: 'Exclude merge commits',
-                  default: false
-
     def weekly_commits
       relative_week = options[:week]
       beg_week = relative_week.week.ago.beginning_of_week
@@ -42,8 +37,7 @@ module WeeklyCommits
         git_date_format = date.strftime('%Y-%m-%d')
         committer = options[:show_author] ? ' (%cn)'.magenta : ''
 
-        git_log_command = "git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}'"
-        git_log_command += ' --no-merges' if options[:no_merge]
+        git_log_command = "git --no-pager log --after='#{git_date_format} 00:00' --before='#{git_date_format} 23:59' --pretty=format:'%s#{committer}' --no-merges"
 
         commits = `#{git_log_command}`
         commits = commits.lines.reverse if options[:sort].casecmp('asc').zero?
